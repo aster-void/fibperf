@@ -23,8 +23,6 @@ echo "Rust Tokio:"
 time (cd green/tokio && ./fib > /dev/null)
 echo
 
-exit
-
 echo "------------------------------------"
 echo "| Benchmarking Red thread runtimes |"
 echo "------------------------------------"
