@@ -11,9 +11,6 @@ async function main() {
   const count = process.env.COUNT ?? 10;
   const sleep = (process.env.SLEEP_BETWEEN ?? 0) * 1000;
   const threshold = process.env.DISPATCH_THRESHOLD;
-  if (!threshold) {
-    throw new Error();
-  }
   const result = await splitWorkers({
     count,
     sleep,
@@ -23,6 +20,7 @@ async function main() {
 }
 
 async function worker() {
+  if (!workerData.threshold) throw new Error("no threshold: " + JSON.stringify(workerData))
   if (workerData.sleep !== 0) {
     console.log(`workerData.count === ${workerData.count}`);
     await setTimeout(workerData.sleep);
@@ -34,10 +32,12 @@ async function worker() {
   const one = splitWorkers({
     count: workerData.count - 1,
     sleep: workerData.sleep,
+    threshold: workerData.threshold,
   });
   const two = splitWorkers({
     count: workerData.count - 2,
     sleep: workerData.sleep,
+    threshold: workerData.threshold,
   });
   parentPort.postMessage(await one + await two);
 }
