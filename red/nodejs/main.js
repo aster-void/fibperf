@@ -7,7 +7,6 @@ const {
 } = require("worker_threads");
 
 async function main() {
-  require("dotenv").config();
   const count = process.env.COUNT ?? 10;
   const sleep = (process.env.SLEEP_BETWEEN ?? 0) * 1000;
   const threshold = process.env.DISPATCH_THRESHOLD;
