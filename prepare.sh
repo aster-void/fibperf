@@ -31,9 +31,9 @@ function setup_go() {
 )
 (
   cd single/clang
-  clang main.c -o fib -O3 -mllvm -polly -march=native
+  clang main.c -o fib -O3
 )
 (
   cd single/gcc
-  gcc main.c -o fib -Ofast
+  gcc main.c -o fib -O3
 )

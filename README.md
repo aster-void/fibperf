@@ -33,3 +33,6 @@ single:
 - Node.js with async/await
 - Rust
 - Go
+- Gleam (no env read) (no compile, runs gleam run)
+- Clang C (no env read) (I'm not familiar with optimization flags)
+- GCC C (no env read)
