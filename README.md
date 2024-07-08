@@ -1,5 +1,34 @@
 # fib in many languages
 
+## Dependencies
+
+- Gleam
+- Erlang (if your package manager doesn't install automatically)
+- Node.js
+- Go
+- Cargo
+- GCC
+- Clang
+
+## Available runtimes
+
+green:
+- Go
+- Tokio
+
+red:
+- Node.js with Worker + async/await
+- Rust with std::thread
+
+single:
+- Node.js
+- Node.js with async/await
+- Rust
+- Go
+- Gleam (no env read) (no compile, runs gleam run)
+- Clang C (no env read) (I'm not familiar with optimization flags)
+- GCC C (no env read)
+
 ## Directories
 
 `green` contains green-threaded runtimes such as go and tokio.
@@ -19,20 +48,3 @@ default: 1
 SLEEP_BETWEEN is for debugging. it makes the recursive functions sleep for $SLEEP_BETWEEN seconds before calling one deeper function.
 Note that it may or may not do anything on single thread.
 default: 0
-
-## Available runtimes
-
-green:
-- Go
-- Tokio
-red:
-- Node.js with Worker + async/await
-- Rust with std::thread
-single:
-- Node.js
-- Node.js with async/await
-- Rust
-- Go
-- Gleam (no env read) (no compile, runs gleam run)
-- Clang C (no env read) (I'm not familiar with optimization flags)
-- GCC C (no env read)
