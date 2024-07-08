@@ -6,7 +6,9 @@ export TIMEFORMAT='%3Rs'
 
 export COUNT=42
 export SLEEP_BETWEEN=0
-export DISPATCH_THRESHOLD=39
+
+# lewor the threshold because green thread runtimes are better at handling these tasks
+export DISPATCH_THRESHOLD=25
 
 echo "--------------------------------------"
 echo "| Benchmarking Green thread runtimes |"
@@ -21,12 +23,14 @@ echo "Rust Tokio:"
 time (cd green/tokio && ./fib > /dev/null)
 echo
 
+exit
+
 echo "------------------------------------"
 echo "| Benchmarking Red thread runtimes |"
 echo "------------------------------------"
 echo
 
-export DISPATCH_THRESHOLD=39
+export DISPATCH_THRESHOLD=37
 
 echo "Node.js with Workers:"
 time (cd red/nodejs && node main.js > /dev/null)
