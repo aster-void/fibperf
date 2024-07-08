@@ -22,6 +22,16 @@ function setup_go() {
   setup_rust
 )
 (
+  # precompile gleam s.t. gleam run can read from cache
+  cd red/gleam
+  gleam build
+)
+(
+  # precompile gleam s.t. gleam run can read from cache
+  cd single/gleam
+  gleam build
+)
+(
   cd single/go
   setup_go
 )

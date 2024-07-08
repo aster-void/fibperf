@@ -34,6 +34,10 @@ echo "Rust with std::thread:"
 time (cd red/rust && ./fib > /dev/null)
 echo
 
+echo "Gleam with gleam/otp/task:"
+time (cd red/gleam && gleam run --target erlang > /dev/null)
+echo
+
 echo "---------------------------------------"
 echo "| Benchmarking Single thread runtimes |"
 echo "---------------------------------------"

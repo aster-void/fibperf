@@ -19,6 +19,7 @@ green:
 red:
 - Node.js with Worker + async/await
 - Rust with std::thread
+- Gleam with gleam/otp/task
 
 single:
 - Node.js
@@ -28,19 +29,6 @@ single:
 - Gleam (no env read) (no compile, runs gleam run)
 - Clang C (no env read) (I'm not familiar with optimization flags)
 - GCC C (no env read)
-
-## How to see the results
-
-(this part is all my guess)
-
-the result of `time` command has 3 parts.
-
-`real`: time it actually took.
-
-`user`: total time each CPU core spent on the command.
-
-`sys`: syscall? idk
-
 
 ## Directories
 
