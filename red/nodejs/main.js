@@ -10,9 +10,14 @@ async function main() {
   require("dotenv").config();
   const count = process.env.COUNT ?? 10;
   const sleep = (process.env.SLEEP_BETWEEN ?? 0) * 1000;
+  const threshold = process.env.DISPATCH_THRESHOLD;
+  if (!threshold) {
+    throw new Error();
+  }
   const result = await splitWorkers({
     count,
     sleep,
+    threshold,
   });
   console.log(result);
 }
@@ -22,8 +27,8 @@ async function worker() {
     console.log(`workerData.count === ${workerData.count}`);
     await setTimeout(workerData.sleep);
   }
-  if (workerData.count <= 1) {
-    parentPort.postMessage(workerData.count);
+  if (workerData.count <= workerData.threshold) {
+    parentPort.postMessage(syncFib(workerData.count));
     return
   }
   const one = splitWorkers({
@@ -55,4 +60,11 @@ function splitWorkers(workerData) {
         reject(new Error(`Worker stopped with exit code ${code}`));
     });
   })
+}
+
+function syncFib(count) {
+  if (count <= 1) {
+    return count
+  }
+  return syncFib(count - 1) + syncFib(count - 2);
 }

@@ -6,7 +6,8 @@ use tokio;
 async fn main() {
     let sleep = parse_env("SLEEP_BETWEEN").unwrap_or(0);
     let count = parse_env("COUNT").unwrap_or(10);
-    println!("{}", fib(count, sleep).await);
+    let threshold = parse_env("DISPATCH_THRESHOLD").unwrap_or(1);
+    println!("{}", fib(count, sleep, threshold).await);
 }
 
 fn parse_env(name: &str) -> Option<usize> {
@@ -19,18 +20,25 @@ fn parse_env(name: &str) -> Option<usize> {
     return None;
 }
 
-fn fib(count: usize, sleep: usize) -> BoxFuture<'static, usize> {
+fn fib(count: usize, sleep: usize, threshold: usize) -> BoxFuture<'static, usize> {
     async move {
         if sleep != 0 {
             println!("running fib({count})");
             tokio::time::sleep(Duration::from_secs(1)).await;
         }
-        if count <= 1 {
-            return count;
+        if count <= threshold {
+            return fibsync(count);
         }
-        let one = tokio::spawn(fib(count - 1, sleep));
-        let two = tokio::spawn(fib(count - 2, sleep));
+        let one = tokio::spawn(fib(count - 1, sleep, threshold));
+        let two = tokio::spawn(fib(count - 2, sleep, threshold));
         return one.await.unwrap() + two.await.unwrap();
     }
     .boxed()
+}
+fn fibsync(count: usize) -> usize {
+    if count <= 1 {
+        count
+    } else {
+        fibsync(count - 1) + fibsync(count - 2)
+    }
 }
