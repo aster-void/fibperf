@@ -2,6 +2,8 @@
 
 ./prepare.sh
 
+export TIMEFORMAT='%3Rs'
+
 export COUNT=42
 export SLEEP_BETWEEN=0
 export DISPATCH_THRESHOLD=39
@@ -10,12 +12,12 @@ echo "--------------------------------------"
 echo "| Benchmarking Green thread runtimes |"
 echo "--------------------------------------"
 
-echo "Benchmarking Go"
-time (cd green/go && ./fib)
+echo "Go with channels:"
+time (cd green/go && ./fib > /dev/null)
 echo
 
-echo "Benchmarking Tokio"
-time (cd green/tokio && ./fib)
+echo "Rust Tokio:"
+time (cd green/tokio && ./fib > /dev/null)
 echo
 
 echo "------------------------------------"
@@ -24,12 +26,12 @@ echo "------------------------------------"
 
 export DISPATCH_THRESHOLD=39
 
-echo "Benchmarking Node.js Workers"
-time (cd red/nodejs && node main.js)
+echo "Node.js with Workers:"
+time (cd red/nodejs && node main.js > /dev/null)
 echo
 
-echo "Benchmarking Rust std::thread"
-time (cd red/rust && ./fib)
+echo "Rust with std::thread:"
+time (cd red/rust && ./fib > /dev/null)
 echo
 
 echo "---------------------------------------"
@@ -37,30 +39,30 @@ echo "| Benchmarking Single thread runtimes |"
 echo "---------------------------------------"
 
 # I don't know how to run compiled gleam
-echo "Benchmarking Gleam"
-time (cd single/gleam && gleam run --target erlang) 
+echo "Gleam:"
+time (cd single/gleam && gleam run --target erlang > /dev/null) 
 echo 
 
-echo "Benchmarking Node.js"
-time (cd single/nodejs && node main.mjs)
+echo "Node.js:"
+time (cd single/nodejs && node main.mjs > /dev/null)
 echo 
 
-echo "Benchmarking Node.js with async/await"
-time (cd single/nodejs && node main.mjs)
+echo "Node.js with async/await:"
+time (cd single/nodejs && node main.mjs > /dev/null)
 echo
 
-echo "Benchmarking Single-thread Go"
-time (cd single/go && ./fib)
+echo "Single-thread Go:"
+time (cd single/go && ./fib > /dev/null)
 echo
 
-echo "Benchmarking Rust"
-time (cd single/rust && ./fib)
+echo "Rust:"
+time (cd single/rust && ./fib > /dev/null)
 echo
 
-echo "Benchmarking Clang"
-time (cd single/clang && ./fib)
+echo "Clang:"
+time (cd single/clang && ./fib > /dev/null)
 echo
 
-echo "Benchmarking GCC"
-time (cd single/gcc && ./fib)
+echo "GCC:"
+time (cd single/gcc && ./fib > /dev/null)
 echo
