@@ -1,5 +1,5 @@
-import { setTimeout } from "timers/promises"
-import { dotenv } from "dotenv"
+import { setTimeout } from "timers/promises";
+import dotenv from "dotenv";
 dotenv.config();
 
 const sleep = (process.env.SLEEP ?? 0) * 1000;

@@ -1,0 +1,7 @@
+{
+  "name": "nodejs",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.4.5"
+  }
+}
