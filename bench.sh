@@ -11,6 +11,7 @@ export DISPATCH_THRESHOLD=39
 echo "--------------------------------------"
 echo "| Benchmarking Green thread runtimes |"
 echo "--------------------------------------"
+echo
 
 echo "Go with channels:"
 time (cd green/go && ./fib > /dev/null)
@@ -23,6 +24,7 @@ echo
 echo "------------------------------------"
 echo "| Benchmarking Red thread runtimes |"
 echo "------------------------------------"
+echo
 
 export DISPATCH_THRESHOLD=39
 
@@ -41,6 +43,7 @@ echo
 echo "---------------------------------------"
 echo "| Benchmarking Single thread runtimes |"
 echo "---------------------------------------"
+echo
 
 # I don't know how to run compiled gleam
 echo "Gleam:"
