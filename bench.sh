@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+./prepare.sh
+
 export COUNT=32
 export SLEEP_BETWEEN=0
 export DISPATCH_THRESHOLD=24
@@ -9,10 +11,10 @@ echo "| Benchmarking Green thread runtimes |"
 echo "--------------------------------------"
 
 echo "Benchmarking Go"
-time (cd green/go && go run .) # FIX THIS
+time (cd green/go && ./fib) # FIX THIS
 
 echo "Benchmarking Tokio"
-time (cd green/tokio && cargo run) # FIX THIS
+time (cd green/tokio && ./fib) # FIX THIS
 
 echo "------------------------------------"
 echo "| Benchmarking Red thread runtimes |"
