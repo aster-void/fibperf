@@ -29,6 +29,19 @@ single:
 - Clang C (no env read) (I'm not familiar with optimization flags)
 - GCC C (no env read)
 
+## How to see the results
+
+(this part is all my guess)
+
+the result of `time` command has 3 parts.
+
+`real`: time it actually took.
+
+`user`: total time each CPU core spent on the command.
+
+`sys`: syscall? idk
+
+
 ## Directories
 
 `green` contains green-threaded runtimes such as go and tokio.
