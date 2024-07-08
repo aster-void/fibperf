@@ -2,7 +2,7 @@
 
 cd `dirname -- $0`
 
-export COUNT=5
+export COUNT=10
 export SLEEP_BETWEEN=1
 
 echo "Testing Go.."

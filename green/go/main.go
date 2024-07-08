@@ -11,7 +11,7 @@ import (
 func main() {
 	count, err := parse_env("COUNT")
 	if err != nil {
-		count = 1000
+		count = 10
 	}
 	sleep, err := parse_env("SLEEP_BETWEEN")
 	if err != nil {

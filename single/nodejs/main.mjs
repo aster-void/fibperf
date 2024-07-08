@@ -3,7 +3,7 @@ import { dotenv } from "dotenv"
 dotenv.config();
 
 const sleep = (process.env.SLEEP ?? 0) * 1000;
-const count = process.env.COUNT ?? 1000;
+const count = process.env.COUNT ?? 10;
 
 const result = await fib(count);
 console.log(result);

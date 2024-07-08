@@ -5,7 +5,7 @@ use tokio;
 #[tokio::main]
 async fn main() {
     let sleep = parse_env("SLEEP_BETWEEN").unwrap_or(0);
-    let count = parse_env("COUNT").unwrap_or(1000);
+    let count = parse_env("COUNT").unwrap_or(10);
     println!("{}", fib(count, sleep).await);
 }
 

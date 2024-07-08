@@ -8,7 +8,7 @@ const {
 
 async function main() {
   require("dotenv").config();
-  const count = process.env.COUNT ?? 5;
+  const count = process.env.COUNT ?? 10;
   const sleep = (process.env.SLEEP_BETWEEN ?? 0) * 1000;
   const result = await splitWorkers({
     count,
