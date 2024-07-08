@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 # build, compile, and optimize.
+
 function setup_rust () {
   cargo build --release
   cp target/release/fib .
@@ -27,4 +28,12 @@ function setup_go() {
 (
   cd single/rust
   setup_rust
+)
+(
+  cd single/clang
+  clang main.c -o fib -O3 -mllvm -polly -march=native
+)
+(
+  cd single/gcc
+  gcc main.c -o fib -Ofast
 )

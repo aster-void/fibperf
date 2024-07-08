@@ -36,6 +36,11 @@ echo "---------------------------------------"
 echo "| Benchmarking Single thread runtimes |"
 echo "---------------------------------------"
 
+# I don't know how to run compiled gleam
+echo "Benchmarking Gleam"
+time (cd single/gleam && gleam run --target erlang) 
+echo 
+
 echo "Benchmarking Node.js"
 time (cd single/nodejs && node main.mjs)
 echo 
@@ -50,4 +55,12 @@ echo
 
 echo "Benchmarking Rust"
 time (cd single/rust && ./fib)
+echo
+
+echo "Benchmarking Clang"
+time (cd single/clang && ./fib)
+echo
+
+echo "Benchmarking GCC"
+time (cd single/gcc && ./fib)
 echo
