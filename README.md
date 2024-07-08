@@ -11,9 +11,25 @@
 ## environment variables
 
 COUNT stands for fib count. the program calculates fib($COUNT) where fib is the fibonacci function.
+default: 10
 
 DISPATCH_THRESHOLD decides where it should switch to syncronous functions for performance. when at 1, the performance is almost equal to when all functions are async. must be at least 1.
+default: 1
 
-SLEEP_BETWEEN is for debugging. it makes the recursive functions sleep for $SLEEP_BETWEEN seconds before calling one deeper function
+SLEEP_BETWEEN is for debugging. it makes the recursive functions sleep for $SLEEP_BETWEEN seconds before calling one deeper function.
 Note that it may or may not do anything on single thread.
+default: 0
 
+## Available runtimes
+
+green:
+- Go
+- Tokio
+red:
+- Node.js with Worker + async/await
+- Rust with std::thread
+single:
+- Node.js
+- Node.js with async/await
+- Rust
+- Go
