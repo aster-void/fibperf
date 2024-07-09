@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+cd `dirname -- $0`
+
 ./prepare.sh
 
 export TIMEFORMAT='%3Rs'

@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+cd `dirname -- $0`
 # build, compile, and optimize.
 
 function setup_rust () {
