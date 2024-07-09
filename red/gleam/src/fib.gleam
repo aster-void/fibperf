@@ -14,10 +14,9 @@ pub fn main() {
 }
 
 fn fib(count: Int) -> Int {
-  case count {
-    _ if count <= 1 -> count
-    _ if count <= threshold -> fibsync(count)
-    _ -> {
+  case count <= threshold {
+    True -> fibsync(count)
+    False -> {
       [count - 1, count - 2]
       |> list.map(fn(c) { task.async(fn() { fib(c) }) })
       |> list.map(task.await_forever)
@@ -27,8 +26,8 @@ fn fib(count: Int) -> Int {
 }
 
 fn fibsync(count: Int) -> Int {
-  case count {
-    _ if count <= 1 -> count
-    _ -> fibsync(count - 1) + fibsync(count - 2)
+  case count <= 1 {
+    True -> count
+    False -> fibsync(count - 1) + fibsync(count - 2)
   }
 }
