@@ -28,6 +28,10 @@ function setup_go() {
   gleam build
 )
 (
+  cd single/haskell
+  ghc main.hs -O2 -o fib
+)
+(
   # precompile gleam s.t. gleam run can read from cache
   cd single/gleam
   gleam build

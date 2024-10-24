@@ -49,6 +49,10 @@ echo "| Benchmarking Single thread runtimes |"
 echo "---------------------------------------"
 echo
 
+echo "Haskell:"
+time (cd single/haskell && ./fib > /dev/null)
+echo 
+
 # I don't know how to run compiled gleam
 echo "Gleam:"
 time (cd single/gleam && gleam run --target erlang > /dev/null) 
